@@ -1,0 +1,121 @@
+body, html {
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  padding: 10px;
+  flex: 1;
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.close {
+  width: auto; 
+  height: auto;
+  line-height: 1;
+}
+
+button {
+  width: 100%;
+}
+
+.bi {
+  font-size: xx-large;
+}
+
+.container {
+  background-color: rgba(202, 252, 202, 0.9);
+  margin: auto;
+  border-radius: 30px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* Log in Page styles */
+.login {
+  background-color: rgba(202, 252, 202, 0.9);
+  width: 450px;
+  margin: auto;
+  border-radius: 30px;
+  padding: 20px;
+  flex: 1;
+}
+
+.login .logo img {
+  height: 100px;
+}
+
+.login .form-control {
+  margin-bottom: 5px;
+}
+
+/* Sign Up Page styles */
+.signup {
+  padding: 20px;
+  flex: 1;
+}
+
+.signup .left-side {
+  background-color: rgba(202, 252, 202, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 0 0 20px;
+  padding: 20px;
+  margin-left: 120px;
+}
+
+.signup-text h2 {
+  font-size: 3rem;
+}
+
+.signup-text .logo {
+  width: 170px;
+  margin-bottom: 20px;
+}
+
+.signup .right-side {
+  background-color: rgba(18, 77, 18, 0.95);
+  border-radius: 0 20px 20px 0;
+  padding: 40px;
+}
+
+.signup-form .form-control {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.signup-form label {
+  color: #fff;
+}
+
+/* Index Page styles */
+.index .left-side {
+  background-color: rgba(202, 252, 202, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 0 0 20px;
+  padding: 20px;
+  border-right: 2px solid #000; 
+}
+
+.index .left-side .logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.index .right-side {
+  background-color: rgba(202, 252, 202, 0.9);
+  border-radius: 0 20px 20px 0;
+  padding: 20px;
+}
+
+.index .table thead {
+  background-color: rgba(0, 50, 0, 0.8);
+  color: white;
+}
+
+.index .table tbody {
+  background-color: rgba(161, 139, 139, 0.2);
+}

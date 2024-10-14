@@ -30,6 +30,15 @@ button {
   flex: 1;
 }
 
+.table thead {
+  background-color: rgba(0, 50, 0, 0.8);
+  color: white;
+}
+
+.table tbody {
+  background-color: rgba(161, 139, 139, 0.2);
+}
+
 /* Log in Page styles */
 .login {
   background-color: rgba(202, 252, 202, 0.9);
@@ -111,11 +120,7 @@ button {
   padding: 20px;
 }
 
-.index .table thead {
-  background-color: rgba(0, 50, 0, 0.8);
-  color: white;
-}
-
-.index .table tbody {
-  background-color: rgba(161, 139, 139, 0.2);
+.admin .logo {
+  width: 100px;
+  margin-bottom: 20px;
 }

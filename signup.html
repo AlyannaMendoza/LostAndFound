@@ -56,7 +56,8 @@
             </div>
             <!-- Right Side -->
             <div class="col-md-6 right-side d-flex align-items-center">
-                <form class="signup-form mx-auto">
+                <!-- signup form with id for javascript -->
+                <form class="signup-form mx-auto" id="signupForm">
                     <div class="mb-3">
                         <label for="fullName" class="form-label">Full Name</label>
                         <input type="text" class="form-control" id="fullName" required>
@@ -80,7 +81,10 @@
         </div>
     </div>
 
+    <!-- source for the signup javascript -->
+    <script src="/js/signup.js"></script>
 
+    <!-- external javascript for the modal -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

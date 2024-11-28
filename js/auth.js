@@ -12,12 +12,12 @@ function checkLogin() {
     // Check if user is trying to access the admin page
     if (userRole === "user" && window.location.pathname === "/admin.html") {
         alert("Access denied. Users cannot access the admin page.");
-        window.location.href = "index.html"; // Redirect user to index page
+        window.location.href = "list.html"; // Redirect user to index page
         return;
     }
 
     // If user is admin, allow access to both pages
-    if (userRole === "admin" && window.location.pathname !== "/admin.html" && window.location.pathname !== "/index.html") {
+    if (userRole === "admin" && window.location.pathname !== "/admin.html" && window.location.pathname !== "/list.html") {
         window.location.href = "admin.html"; // Admin should be on admin page
     }
 }

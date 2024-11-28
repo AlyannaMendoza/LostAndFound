@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   background-image: url('/images/background.jpg');
   background-size: cover;
   padding: 10px;
@@ -9,7 +10,7 @@ body, html {
 }
 
 .close {
-  width: auto; 
+  width: auto;
   height: auto;
   line-height: 1;
 }
@@ -97,7 +98,7 @@ button {
   color: #fff;
 }
 
-/* Index Page styles */
+/* List Page styles */
 .index .left-side {
   background-color: rgba(202, 252, 202, 0.9);
   display: flex;
@@ -106,7 +107,7 @@ button {
   align-items: center;
   border-radius: 20px 0 0 20px;
   padding: 20px;
-  border-right: 2px solid #000; 
+  border-right: 2px solid #000;
 }
 
 .index .left-side .logo {
@@ -123,4 +124,45 @@ button {
 .admin .logo {
   width: 100px;
   margin-bottom: 20px;
+}
+
+/* Index(Landing) Page styles */
+.navbar-brand,
+.nav-link {
+  color: white !important;
+}
+
+.landing-content {
+  padding: 80px;
+  display: flex;
+}
+
+.welcome-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.welcome-text p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.welcome-section {
+  background-color: #d3ead8;
+  padding: 50px;
+  border-radius: 15px;
+  margin-left: 30px;
+}
+
+.magnifying-glass {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.magnifying-glass img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }

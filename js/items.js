@@ -5,14 +5,14 @@ let editIndex = -1; // Track the index of the item being edited
 function addItem(event) {
     event.preventDefault();
 
-    const itemInput = document.querySelector('#itemInput').value;
-    const descriptionInput = document.querySelector('#descriptionInput').value;
-    const contactInput = document.querySelector('#contactInput').value;
-    const dateInput = document.querySelector('#dateInput').value;
-    const statusInput = document.querySelector('#statusInput').value; // Get selected status
+    const itemInput = document.querySelector('#itemInput').value.trim();
+    const descriptionInput = document.querySelector('#descriptionInput').value.trim();
+    const contactInput = document.querySelector('#contactInput').value.trim();
+    const dateInput = document.querySelector('#dateInput').value.trim();
+    const statusInput = document.querySelector('#statusInput').value.trim();
 
     if (!itemInput || !descriptionInput || !contactInput || !dateInput || !statusInput) {
-        alert("All fields are required!"); // Validation alert
+        alert("All fields are required!");
         return;
     }
 
@@ -25,21 +25,21 @@ function addItem(event) {
     };
 
     if (editIndex === -1) {
-        // Add new item
         items.push(newItem);
-        alert("Item added successfully!"); // Success message
+        alert("Item added successfully!");
     } else {
-        // Update existing item
         items[editIndex] = newItem;
-        alert("Item updated successfully!"); // Success message
-        editIndex = -1; // Reset the edit index after updating
+        alert("Item updated successfully!");
+        editIndex = -1;
     }
 
     localStorage.setItem('items', JSON.stringify(items));
-    document.querySelector('form').reset(); // Reset form after submission
-    document.querySelector('button[type="submit"]').textContent = "Add Item"; // Change back to "Add Item"
-    displayItems(); // Refresh the displayed items
+    document.querySelector('form').reset();
+    document.querySelector('button[type="submit"]').textContent = "Add Item";
+    displayItems();
 }
+
+
 
 // Function to filter items based on status
 function filterItems(status) {
@@ -69,14 +69,30 @@ function displayItems() {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = ''; // Clear existing rows
 
+    // Iterate over items and create table rows
     items.forEach((item, i) => {
         const row = createTableRow(item, i);
         tbody.appendChild(row);
     });
+
+    // Check if there are no items to display
+    if (items.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="6" class="text-center">No items found</td>`; // Display message if no items are found
+        tbody.appendChild(row);
+    }
 }
 
 // Function to create a table row for an item
 function createTableRow(item, index) {
+    // Ensure getSubmittedForms returns an array; guard against potential issues
+    let hasForms = false;
+
+    try {
+        hasForms = getSubmittedForms(item.item).length > 0; // Check if there are any submitted forms
+    } catch (error) {
+        console.error("Error checking submitted forms: ", error);
+    }
     const row = document.createElement('tr');
     row.innerHTML = `
         <td>${item.item}</td>
@@ -88,6 +104,22 @@ function createTableRow(item, index) {
             ${document.body.contains(document.getElementById('adminPage')) ? `
                 <button class="btn btn-danger btn-sm" onclick="deleteItem(${index})">Delete</button>
                 <button class="btn btn-success btn-sm" onclick="editItem(${index})">Edit</button>
+            ` : ''}
+        </td>
+         <td>
+            ${document.body.contains(document.getElementById('adminPage')) ? `
+                <button class="btn btn-info btn-sm" onclick="showSubmittedForms('${item.item}')">Details</button>
+            ` : ''}
+
+            ${document.body.contains(document.getElementById('itemPage')) ? `
+                <button class="btn" onclick="openFormModal(${index})">
+                    <i class="bi bi-pencil-square" style="font-size: unset;"></i>
+                </button>
+            ` : ''}
+        </td>
+        <td>
+            ${document.body.contains(document.getElementById('adminPage')) ? `
+                ${hasForms ? '<span class="text-warning">&#x26A0;</span>' : ''} <!-- Show warning icon if forms exist -->
             ` : ''}
         </td>
     `;
@@ -125,6 +157,45 @@ function editItem(index) {
 function showAllItems() {
     displayItems();
 }
+
+// Function to open the modal and populate it with the item details
+function openFormModal(index) {
+    const item = items[index]; // Get the item details
+    document.getElementById('formModalLabel').innerText = `Update Status for ${item.item}`;
+
+    // Show the modal
+    $('#formModal').modal('show'); // Use jQuery to show the modal
+}
+
+// Function to show submitted forms for a specific item
+function showSubmittedForms(itemName) {
+    const submittedForms = JSON.parse(localStorage.getItem('submittedForms')) || {};
+
+    const formsForItem = submittedForms[itemName] || []; // Get forms for the specific item
+    const submittedInfoDiv = document.getElementById('submittedInfo');
+    submittedInfoDiv.innerHTML = ''; // Clear previous data
+
+    if (formsForItem.length === 0) {
+        submittedInfoDiv.innerHTML = '<p>No forms submitted for this item.</p>';
+    } else {
+        formsForItem.forEach((form) => {
+            const formDetails = document.createElement('div');
+            formDetails.innerHTML = `
+                <p><strong>Name:</strong> ${form.name}</p>
+                <p><strong>Contact:</strong> ${form.contact}</p>
+                <p><strong>Date Submitted:</strong> ${form.dateSubmitted}</p>
+                <hr>
+            `;
+            submittedInfoDiv.appendChild(formDetails);
+        });
+    }
+
+    // Show the modal
+    $('#itemModal').modal('show');
+}
+
+// Flag to check if admin is logged in
+const isAdmin = localStorage.getItem("userRole") === "admin";
 
 // Call displayItems on page load
 window.onload = displayItems;

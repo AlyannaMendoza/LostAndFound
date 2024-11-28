@@ -17,7 +17,7 @@ function login(event) {
         localStorage.setItem("currentUser", JSON.stringify(user)); 
 
         // Redirect to user page
-        window.location.href = "index.html";
+        window.location.href = "list.html";
     } else if (studentNumber === "admin" && password === "admin") {
         // Admin login
         localStorage.setItem("isLoggedIn", "true");

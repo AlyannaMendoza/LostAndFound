@@ -13,11 +13,20 @@
 <body>
   <div class="d-flex justify-content-end">
     <div class="btn-group">
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#aboutModal">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
         <i class="bi bi-list"></i>
       </button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <button class="dropdown-item" data-toggle="modal" data-target="#aboutModal">About</button>
+        <button class="dropdown-item" data-toggle="modal" data-target="#contactModal">Contact</button>
+        <button class="dropdown-item" onclick="window.location.href='login.html'">Login</button>
+        <button class="dropdown-item" onclick="window.location.href='signup.html'">Sign Up</button>
+      </div>
     </div>
   </div>
+
+
 
   <!-- About modal Pop-up-->
   <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
@@ -47,6 +56,7 @@
     </div>
   </div>
 
+ 
 
   <!-- Login Form -->
   <div class="login container text-center mt-0">
@@ -56,7 +66,7 @@
     <h2 class="p-1">Lost And Found Items</h2>
     <h5>Sign In</h5>
     <!-- login event for javascript to read/get the inputs -->
-    <form class="mt-4"  onsubmit="login(event)">
+    <form class="mt-4" onsubmit="login(event)">
       <div class="form-group">
         <!-- basaha la an mga sugad, understandable na iton para kan sir -->
         <input type="text" id="studentNumber" class="form-control" placeholder="Student Number" required>
@@ -66,20 +76,21 @@
         <input type="password" id="password" class="form-control" placeholder="Password" required>
         <label>Password</label>
       </div>
-      <button  type="submit" class ="btn btn-success">Login</button>
+      <button type="submit" class="btn btn-success">Login</button>
       <br><br>
       <p>Don't have any account? <b><a href="signup.html" class="text-success">Sign Up</a></b></p>
       <p class="text-muted small">Input admin credentials to login to admin dashboard</p>
-        <!-- admin username = admin, password = admin -->
+      <!-- admin username = admin, password = admin -->
     </form>
   </div>
 
-  
+
   <script src="/js/login.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
